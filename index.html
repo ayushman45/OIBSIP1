@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            background-color: black;
+            font-family: sans-serif;
+            color: aliceblue;
+        }
+
+        #screen {
+            height: 40px;
+            width: 98.5%;
+        }
+
+        .button {
+            width: 101px;
+            height: 40px;
+            font-weight: bold;
+            background-color: darkgrey
+        }
+        .fade{
+            background-color:aliceblue ;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CALCULATOR</h1>
+    <table id="calcu">
+        <tr>
+            <td colspan="4"><input type="text" id="screen"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="(" id="(" /> </td>
+            <td><input type="button" class="button" value=")" id=")"></td>
+            <td><input type="button" class="button" value="CE" id="ce"></td>
+            <td><input type="button" class="button" value="/" id="/"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="9" id="9"> </td>
+            <td><input type="button" class="button" value="8" id="8"> </td>
+            <td><input type="button" class="button" value="7" id="7"> </td>
+            <td><input type="button" class="button" value="*" id="*"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="6" id="6"> </td>
+            <td><input type="button" class="button" value="5" id="5"> </td>
+            <td><input type="button" class="button" value="4" id="4"> </td>
+            <td><input type="button" class="button" value="+" id="+"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="3" id="3"> </td>
+            <td><input type="button" class="button" value="2" id="2"> </td>
+            <td><input type="button" class="button" value="1" id="1"> </td>
+            <td><input type="button" class="button" value="-" id="-"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="C" id="c"> </td>
+            <td><input type="button" class="button" value="0" id="0"> </td>
+            <td><input type="button" class="button" value="00" id="00"> </td>
+            <td><input type="button" class="button" value="=" id="eq"> </td>
+        </tr>
+        <h4>Made with ❤️ by Ayushman Manishankar</h4>
+    </table>
+    <script>
+        var scr = document.getElementById("screen");
+        var btn = document.getElementsByClassName("button");
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                this.classList.add("fade")
+                setInterval(() => {
+                    this.classList.remove("fade")
+                }, 80);
+                if (this.id == 'c') {
+                    scr.value = "";
+                } else if (this.id == 'ce') {
+                    scr.value = scr.value.substr(0, scr.value.length - 1)
+                } else if (this.id == 'eq') {
+                    scr.value = eval(scr.value)
+                } else {
+                    scr.value += this.id
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
